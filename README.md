@@ -1,4 +1,4 @@
-# Custom Template React TypeScript
+# Custom Template React Redux TypeScript
 
 ## Installation:
 
@@ -23,11 +23,12 @@ $ npm run dev or yarn dev
 ```
 
 3.  Run in **PRODUCTION** mode.
+
 ```terminal
 $ npm run build or yarn build
 ```
-> After building the app you need to serve your `client-build` folder in node.js or in your hosting.
-4.  That's it! Congrats.
+
+> After building the app you need to serve your `client-build` folder in node.js or in your hosting. 4. That's it! Congrats.
 
 ## Follow me:
 
