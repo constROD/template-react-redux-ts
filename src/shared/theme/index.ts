@@ -2,7 +2,7 @@ import { IColorTheme, IScreenTheme, ITheme } from "shared/models/theme/theme";
 import defaultStyled, {
   createGlobalStyle,
   ThemedStyledInterface,
-  ThemeProvider as SThemeProvider
+  ThemeProvider as SThemeProvider,
 } from "styled-components";
 
 const colors: IColorTheme = {

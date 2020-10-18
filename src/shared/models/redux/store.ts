@@ -1,10 +1,10 @@
-import { UsersState } from "./users";
+import { IUsersState } from "./users";
 
-export interface ActionType<P> {
+export interface IActionType<P> {
   type: string;
   payload: P;
 }
 
-export interface StoreState {
-  users: UsersState;
+export interface IStoreState {
+  users: IUsersState;
 }

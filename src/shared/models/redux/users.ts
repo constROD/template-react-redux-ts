@@ -1,7 +1,7 @@
-export interface UsersState {
-  currentUser: CurrentUser;
+export interface IUsersState {
+  currentUser: ICurrentUser;
 }
 
-export interface CurrentUser {
+export interface ICurrentUser {
   name: string;
 }
