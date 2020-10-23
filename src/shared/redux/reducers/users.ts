@@ -1,6 +1,6 @@
 import { DEFAULT_USERS } from "shared/constants/redux/defaults";
-import { IActionType } from "shared/models/redux/store";
-import { ICurrentUser } from "shared/models/redux/users";
+import { IActionType } from "shared/interfaces/redux/store";
+import { ICurrentUser } from "shared/interfaces/redux/users";
 import { SET_CURRENT_USER } from "../../constants/redux/types";
 
 export const usersReducer = (

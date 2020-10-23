@@ -1,15 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StoreState } from "shared/models/redux/store";
-import { CurrentUser } from "shared/models/redux/users";
+import { IStoreState } from "shared/interfaces/redux/store";
+import { ICurrentUser } from "shared/interfaces/redux/users";
 import { setCurrentUser } from "shared/redux/actions/users";
 import { styled } from "shared/theme";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector<StoreState>(
+  const currentUser = useSelector<IStoreState>(
     (state) => state.users.currentUser
-  ) as CurrentUser;
+  ) as ICurrentUser;
 
   console.log("currentUser: ", currentUser);
 
