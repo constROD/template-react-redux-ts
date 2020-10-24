@@ -28,7 +28,9 @@ $ npm run dev or yarn dev
 $ npm run build or yarn build
 ```
 
-> After building the app you need to serve your `client-build` folder in node.js or in your hosting. 4. That's it! Congrats.
+> After building the app you need to serve your `client-build` folder in node.js or in your hosting. 
+
+4. That's it! Congrats.
 
 ## Follow me:
 
