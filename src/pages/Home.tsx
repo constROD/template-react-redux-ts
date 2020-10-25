@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Button } from "shared/elements/button/Button";
 import { IStoreState } from "shared/interfaces/redux/store";
 import { ICurrentUser } from "shared/interfaces/redux/users";
 import { setCurrentUser } from "shared/redux/actions/users";
@@ -18,10 +19,9 @@ const Home: React.FC = () => {
       <h2>
         Click the button to display my name here: {currentUser?.name ?? ""}
       </h2>
-      <button onClick={() => dispatch(setCurrentUser({ name: "bossROD" }))}>
-        {" "}
-        Display 'bossROD'
-      </button>
+      <Button onClick={() => dispatch(setCurrentUser({ name: "bossROD" }))}>
+        Display redux
+      </Button>
       <h1>
         Hello Home! <span>test</span>
       </h1>
