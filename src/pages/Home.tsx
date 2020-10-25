@@ -5,6 +5,11 @@ import { IStoreState } from "shared/interfaces/redux/store";
 import { ICurrentUser } from "shared/interfaces/redux/users";
 import { setCurrentUser } from "shared/redux/actions/users";
 import { styled } from "shared/theme";
+import { useForm } from "shared/utils/form";
+
+type HomeForm = {
+  name: string;
+};
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -12,10 +17,28 @@ const Home: React.FC = () => {
     (state) => state.users.currentUser
   ) as ICurrentUser;
 
-  console.log("currentUser: ", currentUser);
+  const initialValues = {
+    name: "",
+  };
+
+  const { values, handleChange, setFieldValue } = useForm<HomeForm>({
+    initialValues,
+  });
 
   return (
     <HomeWrapper>
+      <input
+        type="text"
+        name="name"
+        value={values.name}
+        onChange={handleChange}
+      />
+      <Button onClick={() => setFieldValue("name", "bossROD")}>
+        Set Value to 'bossROD'
+      </Button>
+      <Button onClick={() => alert("name: " + JSON.stringify(values))}>
+        Click to alert values
+      </Button>
       <h2>
         Click the button to display my name here: {currentUser?.name ?? ""}
       </h2>
