@@ -4,7 +4,7 @@ export interface IForm<I> {
 
 export interface IFieldArray<D> {
   fieldName: string;
+  arrayValues: D[];
   defaultValue: D;
-  initialValues?: D[];
   setFieldValue: (name: string, value: any) => void;
 }

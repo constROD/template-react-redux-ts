@@ -7,8 +7,14 @@ import { setCurrentUser } from "shared/redux/actions/users";
 import { styled } from "shared/theme";
 import { useFieldArray, useForm } from "shared/utils/form";
 
+type DefaultValueForArray = {
+  age: number | undefined;
+  gender: "";
+};
+
 type HomeForm = {
   name: string;
+  array: DefaultValueForArray[];
 };
 
 const Home: React.FC = () => {
@@ -17,15 +23,11 @@ const Home: React.FC = () => {
     (state) => state.users.currentUser
   ) as ICurrentUser;
 
-  interface DefaultValueForArray {
-    age: number | undefined;
-    gender: "";
-  }
-
   const defaultValueForArrayField: DefaultValueForArray = {
     age: undefined,
     gender: "",
   };
+
   const initialValues = {
     name: "",
     array: [defaultValueForArrayField],
@@ -35,15 +37,12 @@ const Home: React.FC = () => {
     initialValues,
   });
 
-  const {
-    values: arrayOfValues,
-    add,
-    remove,
-    handleChangeArray,
-  } = useFieldArray<DefaultValueForArray>({
+  const { add, remove, handleChangeArray } = useFieldArray<
+    DefaultValueForArray
+  >({
     fieldName: "array",
     defaultValue: defaultValueForArrayField,
-    initialValues: initialValues.array,
+    arrayValues: values.array,
     setFieldValue,
   });
 
@@ -63,7 +62,7 @@ const Home: React.FC = () => {
       </Button>
 
       <h1>FieldArray</h1>
-      {arrayOfValues.map((item: DefaultValueForArray, idx: number) => {
+      {values.array.map((item: DefaultValueForArray, idx: number) => {
         return (
           <div
             key={idx}

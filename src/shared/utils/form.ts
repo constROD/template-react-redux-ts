@@ -28,33 +28,28 @@ export const useForm = <I>({ initialValues }: IForm<I>) => {
 
 export const useFieldArray = <D>({
   fieldName,
+  arrayValues,
   defaultValue,
-  initialValues,
   setFieldValue,
 }: IFieldArray<D>) => {
-  const [values, setValues] = useState(initialValues || [defaultValue]);
+  const newList = [...arrayValues];
 
   const add = () => {
-    const newList = [...values];
     newList.push(defaultValue);
-    setValues(newList);
+    setFieldValue(fieldName, newList);
   };
 
   const remove = (index: number) => {
-    const newList = [...values];
     newList.splice(index, 1);
-    setValues(newList);
+    setFieldValue(fieldName, newList);
   };
 
   const handleChangeArray = (idx: number, name: string, value: any) => {
-    const newList = [...values];
     newList[idx] = { ...newList[idx], [name]: value };
-    setValues(newList);
     setFieldValue(fieldName, newList);
   };
 
   return {
-    values,
     add,
     remove,
     handleChangeArray,
