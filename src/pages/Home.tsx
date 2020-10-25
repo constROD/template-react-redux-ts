@@ -20,7 +20,7 @@ const Home: React.FC = () => {
         Click the button to display my name here: {currentUser?.name ?? ""}
       </h2>
       <Button onClick={() => dispatch(setCurrentUser({ name: "bossROD" }))}>
-        Display redux
+        Display Current User
       </Button>
       <h1>
         Hello Home! <span>test</span>
@@ -28,6 +28,8 @@ const Home: React.FC = () => {
     </HomeWrapper>
   );
 };
+
+export default Home;
 
 const HomeWrapper = styled.div`
   h1 {
@@ -38,5 +40,3 @@ const HomeWrapper = styled.div`
     }
   }
 `;
-
-export default Home;
