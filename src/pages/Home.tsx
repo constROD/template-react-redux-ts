@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "shared/elements/button/Button";
+import { Button } from "shared/elements";
 import { IStoreState } from "shared/interfaces/redux/store";
 import { ICurrentUser } from "shared/interfaces/redux/users";
 import { setCurrentUser } from "shared/redux/actions/users";
