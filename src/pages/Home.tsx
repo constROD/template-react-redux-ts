@@ -5,7 +5,7 @@ import { IStoreState } from "shared/interfaces/redux/store";
 import { ICurrentUser } from "shared/interfaces/redux/users";
 import { setCurrentUser } from "shared/redux/actions/users";
 import { styled } from "shared/theme";
-import { useForm } from "shared/utils/form";
+import { useFieldArray, useForm } from "shared/utils/form";
 
 type HomeForm = {
   name: string;
@@ -17,12 +17,34 @@ const Home: React.FC = () => {
     (state) => state.users.currentUser
   ) as ICurrentUser;
 
+  interface DefaultValueForArray {
+    age: number | undefined;
+    gender: "";
+  }
+
+  const defaultValueForArrayField: DefaultValueForArray = {
+    age: undefined,
+    gender: "",
+  };
   const initialValues = {
     name: "",
+    array: [defaultValueForArrayField],
   };
 
   const { values, handleChange, setFieldValue } = useForm<HomeForm>({
     initialValues,
+  });
+
+  const {
+    values: arrayOfValues,
+    add,
+    remove,
+    handleChangeArray,
+  } = useFieldArray<DefaultValueForArray>({
+    fieldName: "array",
+    defaultValue: defaultValueForArrayField,
+    initialValues: initialValues.array,
+    setFieldValue,
   });
 
   return (
@@ -39,6 +61,38 @@ const Home: React.FC = () => {
       <Button onClick={() => alert("name: " + JSON.stringify(values))}>
         Click to alert values
       </Button>
+
+      <h1>FieldArray</h1>
+      {arrayOfValues.map((item: DefaultValueForArray, idx: number) => {
+        return (
+          <div
+            key={idx}
+            style={{ display: "flex", flexDirection: "column", width: "400px" }}
+          >
+            <input
+              type="text"
+              placeholder="input age"
+              value={item.age}
+              name="age"
+              onChange={(e) =>
+                handleChangeArray(idx, e.target.name, e.target.value)
+              }
+            />
+            <input
+              type="text"
+              placeholder="input gender"
+              value={item.gender}
+              name="gender"
+              onChange={(e) =>
+                handleChangeArray(idx, e.target.name, e.target.value)
+              }
+            />
+            <Button onClick={add}>Add more</Button>
+            <Button onClick={() => remove(idx)}>Remove</Button>
+          </div>
+        );
+      })}
+
       <h2>
         Click the button to display my name here: {currentUser?.name ?? ""}
       </h2>
