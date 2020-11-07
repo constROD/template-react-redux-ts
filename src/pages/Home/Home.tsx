@@ -54,7 +54,7 @@ const Home: React.FC = () => {
         value={values.name}
         onChange={handleChange}
       />
-      <Button onClick={() => setFieldValue("name", "bossROD")}>
+      <Button color="primary" onClick={() => setFieldValue("name", "bossROD")}>
         Set Value to 'bossROD'
       </Button>
       <Button onClick={() => alert("name: " + JSON.stringify(values))}>
